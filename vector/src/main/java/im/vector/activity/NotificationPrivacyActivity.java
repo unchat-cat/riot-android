@@ -23,8 +23,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import org.matrix.androidsdk.rest.callback.SimpleApiCallback;
-import org.matrix.androidsdk.rest.model.MatrixError;
+import org.matrix.androidsdk.util.callback.SimpleApiCallback;
+import org.matrix.androidsdk.util.model.MatrixError;
 
 import butterknife.BindView;
 import butterknife.OnClick;

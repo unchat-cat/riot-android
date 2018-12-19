@@ -35,14 +35,13 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.JsonElement;
 
 import org.matrix.androidsdk.MXSession;
+import org.matrix.androidsdk.crypto.model.crypto.EncryptedFileInfo;
 import org.matrix.androidsdk.db.MXMediaCache;
 import org.matrix.androidsdk.listeners.IMXMediaDownloadListener;
 import org.matrix.androidsdk.listeners.IMXMediaUploadListener;
 import org.matrix.androidsdk.listeners.MXMediaDownloadListener;
 import org.matrix.androidsdk.listeners.MXMediaUploadListener;
 import org.matrix.androidsdk.rest.model.Event;
-import org.matrix.androidsdk.rest.model.MatrixError;
-import org.matrix.androidsdk.rest.model.crypto.EncryptedFileInfo;
 import org.matrix.androidsdk.rest.model.message.FileMessage;
 import org.matrix.androidsdk.rest.model.message.ImageInfo;
 import org.matrix.androidsdk.rest.model.message.ImageMessage;
@@ -52,6 +51,7 @@ import org.matrix.androidsdk.rest.model.message.VideoInfo;
 import org.matrix.androidsdk.rest.model.message.VideoMessage;
 import org.matrix.androidsdk.util.JsonUtils;
 import org.matrix.androidsdk.util.Log;
+import org.matrix.androidsdk.util.model.MatrixError;
 
 import java.util.HashMap;
 import java.util.Map;

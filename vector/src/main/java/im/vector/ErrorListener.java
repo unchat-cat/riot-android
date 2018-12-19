@@ -16,17 +16,15 @@
 package im.vector;
 
 import android.app.Activity;
-
-import org.matrix.androidsdk.util.Log;
-
 import android.widget.Toast;
 
 import org.matrix.androidsdk.MXSession;
-import org.matrix.androidsdk.rest.callback.ApiFailureCallback;
-import org.matrix.androidsdk.rest.model.MatrixError;
 import org.matrix.androidsdk.ssl.CertUtil;
 import org.matrix.androidsdk.ssl.Fingerprint;
 import org.matrix.androidsdk.ssl.UnrecognizedCertificateException;
+import org.matrix.androidsdk.util.Log;
+import org.matrix.androidsdk.util.callback.ApiFailureCallback;
+import org.matrix.androidsdk.util.model.MatrixError;
 
 import java.util.Arrays;
 

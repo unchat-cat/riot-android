@@ -99,7 +99,11 @@ class HomeRoomsViewModel(private val session: MXSession) {
                 .filter {
                     val isJoined = it.isJoined
                     val tombstoneContent = it.state.roomTombstoneContent
-                    val redirectRoom = session.dataHandler.getRoom(tombstoneContent?.replacementRoom)
+                    val redirectRoom = if (tombstoneContent?.replacementRoom != null) {
+                        session.dataHandler.getRoom(tombstoneContent.replacementRoom)
+                    } else {
+                        null
+                    }
                     val isVersioned = redirectRoom?.isJoined
                             ?: false
                     isJoined && !isVersioned && !it.isConferenceUserRoom

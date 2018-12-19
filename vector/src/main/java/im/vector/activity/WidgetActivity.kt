@@ -40,9 +40,9 @@ import im.vector.widgets.Widget
 import im.vector.widgets.WidgetsManager
 import org.matrix.androidsdk.MXSession
 import org.matrix.androidsdk.data.Room
-import org.matrix.androidsdk.rest.callback.ApiCallback
-import org.matrix.androidsdk.rest.model.MatrixError
 import org.matrix.androidsdk.util.Log
+import org.matrix.androidsdk.util.callback.ApiCallback
+import org.matrix.androidsdk.util.model.MatrixError
 
 /*
  * This class displays a widget

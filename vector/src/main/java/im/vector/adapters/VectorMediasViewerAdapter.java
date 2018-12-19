@@ -37,14 +37,14 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.google.gson.JsonElement;
 
 import org.matrix.androidsdk.MXSession;
+import org.matrix.androidsdk.crypto.model.crypto.EncryptedFileInfo;
 import org.matrix.androidsdk.db.MXMediaCache;
 import org.matrix.androidsdk.listeners.MXMediaDownloadListener;
-import org.matrix.androidsdk.rest.callback.SimpleApiCallback;
-import org.matrix.androidsdk.rest.model.MatrixError;
-import org.matrix.androidsdk.rest.model.crypto.EncryptedFileInfo;
 import org.matrix.androidsdk.rest.model.message.Message;
 import org.matrix.androidsdk.util.JsonUtils;
 import org.matrix.androidsdk.util.Log;
+import org.matrix.androidsdk.util.callback.SimpleApiCallback;
+import org.matrix.androidsdk.util.model.MatrixError;
 
 import java.io.File;
 import java.io.FileInputStream;

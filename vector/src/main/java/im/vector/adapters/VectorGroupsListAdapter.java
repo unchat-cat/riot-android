@@ -28,10 +28,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.matrix.androidsdk.MXSession;
-import org.matrix.androidsdk.rest.callback.ApiCallback;
-import org.matrix.androidsdk.rest.model.MatrixError;
 import org.matrix.androidsdk.rest.model.group.Group;
 import org.matrix.androidsdk.rest.model.group.GroupProfile;
+import org.matrix.androidsdk.util.callback.ApiCallback;
+import org.matrix.androidsdk.util.model.MatrixError;
 
 import java.util.HashMap;
 import java.util.Map;

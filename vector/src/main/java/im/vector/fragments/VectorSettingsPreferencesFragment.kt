@@ -68,12 +68,8 @@ import org.matrix.androidsdk.data.MyUser
 import org.matrix.androidsdk.data.Pusher
 import org.matrix.androidsdk.data.RoomMediaMessage
 import org.matrix.androidsdk.db.MXMediaCache
-import org.matrix.androidsdk.listeners.IMXNetworkEventListener
 import org.matrix.androidsdk.listeners.MXEventListener
 import org.matrix.androidsdk.listeners.MXMediaUploadListener
-import org.matrix.androidsdk.rest.callback.ApiCallback
-import org.matrix.androidsdk.rest.callback.SimpleApiCallback
-import org.matrix.androidsdk.rest.model.MatrixError
 import org.matrix.androidsdk.rest.model.bingrules.BingRule
 import org.matrix.androidsdk.rest.model.group.Group
 import org.matrix.androidsdk.rest.model.pid.ThirdPartyIdentifier
@@ -83,6 +79,10 @@ import org.matrix.androidsdk.rest.model.sync.DevicesListResponse
 import org.matrix.androidsdk.util.BingRulesManager
 import org.matrix.androidsdk.util.Log
 import org.matrix.androidsdk.util.ResourceUtils
+import org.matrix.androidsdk.util.callback.ApiCallback
+import org.matrix.androidsdk.util.callback.SimpleApiCallback
+import org.matrix.androidsdk.util.listeners.IMXNetworkEventListener
+import org.matrix.androidsdk.util.model.MatrixError
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
