@@ -30,7 +30,7 @@ import org.matrix.androidsdk.MXDataHandler;
 import org.matrix.androidsdk.MXSession;
 import org.matrix.androidsdk.crypto.IncomingRoomKeyRequest;
 import org.matrix.androidsdk.crypto.IncomingRoomKeyRequestCancellation;
-import org.matrix.androidsdk.crypto.MXCrypto;
+import org.matrix.androidsdk.crypto.RoomKeysRequestListener;
 import org.matrix.androidsdk.data.Room;
 import org.matrix.androidsdk.data.RoomState;
 import org.matrix.androidsdk.data.metrics.MetricsListener;
@@ -707,7 +707,7 @@ public class Matrix {
             @Override
             public void onInitialSyncComplete(String toToken) {
                 if (null != session.getCrypto()) {
-                    session.getCrypto().addRoomKeysRequestListener(new MXCrypto.IRoomKeysRequestListener() {
+                    session.getCrypto().addRoomKeysRequestListener(new RoomKeysRequestListener() {
                         @Override
                         public void onRoomKeyRequest(IncomingRoomKeyRequest request) {
                             KeyRequestHandler.getSharedInstance().handleKeyRequest(request);

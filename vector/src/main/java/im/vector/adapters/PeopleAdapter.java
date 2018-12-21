@@ -28,10 +28,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.matrix.androidsdk.MXPatterns;
 import org.matrix.androidsdk.data.Room;
 import org.matrix.androidsdk.rest.model.User;
 import org.matrix.androidsdk.util.Log;
+import org.matrix.androidsdk.util.MXPatterns;
 import org.matrix.androidsdk.util.callback.SimpleApiCallback;
 
 import java.util.ArrayList;

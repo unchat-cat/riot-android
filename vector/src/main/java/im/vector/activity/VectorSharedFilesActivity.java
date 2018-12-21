@@ -21,7 +21,7 @@ import android.content.Intent;
 
 import org.matrix.androidsdk.MXSession;
 import org.matrix.androidsdk.data.RoomMediaMessage;
-import org.matrix.androidsdk.util.ContentUtils;
+import org.matrix.androidsdk.util.FileContentUtils;
 import org.matrix.androidsdk.util.Log;
 
 import java.io.File;
@@ -113,7 +113,7 @@ public class VectorSharedFilesActivity extends VectorAppCompatActivity {
          * Clear the existing folder to reduce storage memory usage
          */
         if (sharedFolder.exists()) {
-            ContentUtils.deleteDirectory(sharedFolder);
+            FileContentUtils.deleteDirectory(sharedFolder);
         }
 
         sharedFolder.mkdir();

@@ -64,6 +64,8 @@ import im.vector.util.*
 import org.matrix.androidsdk.MXSession
 import org.matrix.androidsdk.crypto.data.ImportRoomKeysResult
 import org.matrix.androidsdk.crypto.data.MXDeviceInfo
+import org.matrix.androidsdk.crypto.model.rest.DeviceInfo
+import org.matrix.androidsdk.crypto.model.rest.DevicesListResponse
 import org.matrix.androidsdk.data.MyUser
 import org.matrix.androidsdk.data.Pusher
 import org.matrix.androidsdk.data.RoomMediaMessage
@@ -74,8 +76,7 @@ import org.matrix.androidsdk.rest.model.bingrules.BingRule
 import org.matrix.androidsdk.rest.model.group.Group
 import org.matrix.androidsdk.rest.model.pid.ThirdPartyIdentifier
 import org.matrix.androidsdk.rest.model.pid.ThreePid
-import org.matrix.androidsdk.rest.model.sync.DeviceInfo
-import org.matrix.androidsdk.rest.model.sync.DevicesListResponse
+import org.matrix.androidsdk.rest.model.sync.DeviceInfoUtil
 import org.matrix.androidsdk.util.BingRulesManager
 import org.matrix.androidsdk.util.Log
 import org.matrix.androidsdk.util.ResourceUtils
@@ -2259,7 +2260,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragmentCompat(), SharedPref
             mDevicesNameList = aDeviceInfoList
 
             // sort before display: most recent first
-            DeviceInfo.sortByLastSeen(mDevicesNameList)
+            DeviceInfoUtil.sortByLastSeen(mDevicesNameList)
 
             // start from scratch: remove the displayed ones
             mDevicesListSettingsCategory.removeAll()

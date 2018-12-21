@@ -29,12 +29,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 
 import org.jetbrains.annotations.NotNull;
-import org.matrix.androidsdk.MXPatterns;
 import org.matrix.androidsdk.MXSession;
 import org.matrix.androidsdk.groups.GroupsManager;
 import org.matrix.androidsdk.listeners.MXEventListener;
 import org.matrix.androidsdk.rest.model.group.Group;
 import org.matrix.androidsdk.util.Log;
+import org.matrix.androidsdk.util.MXPatterns;
 import org.matrix.androidsdk.util.callback.ApiCallback;
 import org.matrix.androidsdk.util.model.MatrixError;
 
