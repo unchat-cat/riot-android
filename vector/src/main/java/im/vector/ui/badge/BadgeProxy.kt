@@ -37,7 +37,7 @@ object BadgeProxy {
      * @return true if library ShortcutBadger can be used
      */
     private fun useShortcutBadger(): Boolean {
-        return Build.VERSION.SDK_INT <= Build.VERSION_CODES.O
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.O
     }
 
     /**
