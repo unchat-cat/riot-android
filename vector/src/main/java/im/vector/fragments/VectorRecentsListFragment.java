@@ -26,7 +26,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -64,6 +63,7 @@ import im.vector.activity.VectorPublicRoomsActivity;
 import im.vector.activity.VectorRoomActivity;
 import im.vector.adapters.VectorRoomSummaryAdapter;
 import im.vector.services.EventStreamService;
+import im.vector.ui.badge.BadgeProxy;
 import im.vector.util.RoomUtils;
 import im.vector.view.RecentsExpandableListView;
 
@@ -242,7 +242,7 @@ public class VectorRecentsListFragment extends VectorBaseFragment implements
                         session.getDataHandler().getStore().flushSummary(roomSummary);
                     }
                     // update badge unread count in case device is offline
-                    CommonActivityUtils.specificUpdateBadgeUnreadCount(mSession, getContext());
+                    BadgeProxy.INSTANCE.specificUpdateBadgeUnreadCount(mSession, getContext());
 
                     // launch corresponding room activity
                     if (null != roomId) {

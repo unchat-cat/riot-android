@@ -32,7 +32,6 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -90,6 +89,7 @@ import im.vector.receiver.VectorRegistrationReceiver;
 import im.vector.receiver.VectorUniversalLinkReceiver;
 import im.vector.repositories.ServerUrlsRepository;
 import im.vector.services.EventStreamService;
+import im.vector.ui.badge.BadgeProxy;
 import im.vector.ui.themes.ActivityOtherThemes;
 import im.vector.ui.themes.ThemeUtils;
 import im.vector.util.PhoneNumberUtils;
@@ -580,7 +580,7 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
         refreshDisplay();
 
         // reset the badge counter
-        CommonActivityUtils.updateBadgeCount(this, 0);
+        BadgeProxy.INSTANCE.updateBadgeCount(this, 0);
 
         mHomeServerText.addTextChangedListener(new TextWatcher() {
             @Override

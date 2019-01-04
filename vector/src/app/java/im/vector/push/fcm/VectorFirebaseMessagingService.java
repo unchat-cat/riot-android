@@ -37,6 +37,7 @@ import im.vector.VectorApp;
 import im.vector.activity.CommonActivityUtils;
 import im.vector.push.PushManager;
 import im.vector.services.EventStreamService;
+import im.vector.ui.badge.BadgeProxy;
 
 /**
  * Class extending FirebaseMessagingService.
@@ -111,7 +112,7 @@ public class VectorFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(LOG_TAG, "## onMessageReceivedInternal() : roomId " + roomId + " eventId " + eventId + " unread " + unreadCount);
 
             // update the badge counter
-            CommonActivityUtils.updateBadgeCount(getApplicationContext(), unreadCount);
+            BadgeProxy.INSTANCE.updateBadgeCount(getApplicationContext(), unreadCount);
 
             PushManager pushManager = Matrix.getInstance(getApplicationContext()).getPushManager();
 

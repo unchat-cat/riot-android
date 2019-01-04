@@ -64,6 +64,7 @@ import im.vector.analytics.MetricsListenerProxy;
 import im.vector.push.PushManager;
 import im.vector.services.EventStreamService;
 import im.vector.store.LoginStorage;
+import im.vector.ui.badge.BadgeProxy;
 import im.vector.util.PreferencesManager;
 import im.vector.widgets.WidgetsManager;
 
@@ -159,7 +160,7 @@ public class Matrix {
                         }
 
                         // update the badge counter
-                        CommonActivityUtils.updateBadgeCount(instance.mAppContext, roomCount);
+                        BadgeProxy.INSTANCE.updateBadgeCount(instance.mAppContext, roomCount);
                     }
                 }
 
