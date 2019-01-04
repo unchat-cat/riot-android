@@ -11,7 +11,7 @@ Improvements:
  -
 
 Other changes:
- -
+ - Disable usage of library ShortcutBadger on device running API 26+
 
 Bugfix:
  - Fix crash when taking picture for user avatar on old device (#2818)

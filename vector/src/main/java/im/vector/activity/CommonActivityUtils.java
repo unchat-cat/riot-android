@@ -30,6 +30,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
@@ -311,11 +312,7 @@ public class CommonActivityUtils {
         EventStreamService.removeNotification();
         stopEventStream(context);
 
-        try {
-            ShortcutBadger.setBadge(context, 0);
-        } catch (Exception e) {
-            Log.d(LOG_TAG, "## logout(): Exception Msg=" + e.getMessage(), e);
-        }
+        updateBadgeCount(context, 0);
 
         // warn that the user logs out
         Collection<MXSession> sessions = Matrix.getMXSessions(context);
@@ -399,11 +396,7 @@ public class CommonActivityUtils {
                 EventStreamService.removeNotification();
                 stopEventStream(context);
 
-                try {
-                    ShortcutBadger.setBadge(context, 0);
-                } catch (Exception e) {
-                    Log.d(LOG_TAG, "## logout(): Exception Msg=" + e.getMessage(), e);
-                }
+                updateBadgeCount(context, 0);
 
                 // Publish to the server that we're now offline
                 MyPresenceManager.getInstance(context, mxSession).advertiseOffline();
@@ -1216,7 +1209,14 @@ public class CommonActivityUtils {
     // Application badge (displayed in the launcher)
     //==============================================================================================================
 
-    private static int mBadgeValue = 0;
+    /**
+     * Badge is now managed by notification channel, so no need to use compatibility library in recent versions
+     *
+     * @return true if library ShortcutBadger can be used
+     */
+    private static boolean useShortcutBadger() {
+        return Build.VERSION.SDK_INT <= Build.VERSION_CODES.O;
+    }
 
     /**
      * Update the application badge value.
@@ -1225,8 +1225,11 @@ public class CommonActivityUtils {
      * @param badgeValue the new badge value
      */
     public static void updateBadgeCount(Context context, int badgeValue) {
+        if (!useShortcutBadger()) {
+            return;
+        }
+
         try {
-            mBadgeValue = badgeValue;
             ShortcutBadger.setBadge(context, badgeValue);
         } catch (Exception e) {
             Log.e(LOG_TAG, "## updateBadgeCount(): Exception Msg=" + e.getMessage(), e);
@@ -1244,6 +1247,10 @@ public class CommonActivityUtils {
      * @param aContext App context
      */
     public static void specificUpdateBadgeUnreadCount(MXSession aSession, Context aContext) {
+        if (!useShortcutBadger()) {
+            return;
+        }
+
         MXDataHandler dataHandler;
 
         // sanity check
@@ -1274,6 +1281,10 @@ public class CommonActivityUtils {
      * @param aDataHandler data handler instance
      */
     private static void updateBadgeCount(Context aContext, MXDataHandler aDataHandler) {
+        if (!useShortcutBadger()) {
+            return;
+        }
+
         //sanity check
         if ((null == aContext) || (null == aDataHandler)) {
             Log.w(LOG_TAG, "## updateBadgeCount(): invalid input null values");
@@ -1291,7 +1302,7 @@ public class CommonActivityUtils {
 
             // update the badge counter
             Log.d(LOG_TAG, "## updateBadgeCount(): badge update count=" + unreadRoomsCount);
-            CommonActivityUtils.updateBadgeCount(aContext, unreadRoomsCount);
+            updateBadgeCount(aContext, unreadRoomsCount);
         }
     }
 
