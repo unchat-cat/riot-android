@@ -3,7 +3,7 @@
     package="cat.unchat.riot.alpha"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <application android:label="UnChat - Cat" tools:replace="label">
+    <application android:label="unchat.cat" tools:replace="label">
 
         <receiver android:name=".receiver.OnApplicationUpgradeReceiver">
             <intent-filter>

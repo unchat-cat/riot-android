@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
 
-    <application android:label="UnChat - Cat" tools:replace="label">
+    <application android:label="unchat.cat" tools:replace="label">
 
         <!-- Firebase components -->
         <meta-data
