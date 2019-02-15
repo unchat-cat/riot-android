@@ -1,31 +1,27 @@
 {
   "project_info": {
-    "project_number": "912726360885",
-    "firebase_url": "https://vector-alpha.firebaseio.com",
-    "project_id": "vector-alpha",
-    "storage_bucket": "vector-alpha.appspot.com"
+    "project_number": "1074902152222",
+    "firebase_url": "https://unchat-cat.firebaseio.com",
+    "project_id": "unchat-cat",
+    "storage_bucket": "unchat-cat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:912726360885:android:448c9b63161abc9c",
+        "mobilesdk_app_id": "1:1074902152222:android:82fbab3d046f7b31",
         "android_client_info": {
-          "package_name": "im.vector.alpha"
+          "package_name": "cat.unchat.riot.alpha"
         }
       },
       "oauth_client": [
         {
-          "client_id": "912726360885-rsae0i66rgqt6ivnudu1pv4tksg9i8b2.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "912726360885-e87n3jva9uoj4vbidvijq78ebg02asv2.apps.googleusercontent.com",
+          "client_id": "1074902152222-f97b1iv45u2s8ni69iogt8pq85f297jl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFZX8IhIfgzdOZvxDP_ISO5WYoU7jmQ5c"
+          "current_key": "AIzaSyB7gXsYwN0vhe2bPDcj-CINmey0rQ16FTc"
         }
       ],
       "services": {

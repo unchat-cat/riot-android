@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="im.vector">
+    package="cat.unchat.riot.alpha"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <application>
+    <application android:label="UnChat - Cat" tools:replace="label">
 
         <receiver android:name=".receiver.OnApplicationUpgradeReceiver">
             <intent-filter>
