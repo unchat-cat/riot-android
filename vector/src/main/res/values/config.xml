@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="riot_app_name" translatable="false">Riot.im</string>
+    <string name="riot_app_name" translatable="false">unchat.cat</string>
 
     <!-- server urls -->
     <string name="vector_im_server_url" translatable="false">https://vector.im</string>
-    <string name="matrix_org_server_url" translatable="false">https://matrix.org</string>
+    <string name="matrix_org_server_url" translatable="false">https://matrix.unchat.cat</string>
     <string name="default_hs_server_url" translatable="false">https://matrix.org</string>
-    <string name="default_identity_server_url" translatable="false">https://vector.im</string>
+    <string name="default_identity_server_url" translatable="false"></string>
 
     <!-- Widget urls -->
     <string name="integrations_rest_url" translatable="false">"https://scalar-staging.riot.im/scalar"</string>
@@ -18,6 +18,7 @@
     <string name="push_server_url" translatable="false" />
 
     <string-array name="room_directory_servers" translatable="false">
+        <item>unchat.cat</item>
         <item>matrix.org</item>
     </string-array>
 
