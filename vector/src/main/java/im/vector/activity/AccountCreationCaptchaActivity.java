@@ -103,7 +103,7 @@ public class AccountCreationCaptchaActivity extends VectorAppCompatActivity {
         final View loadingView = findViewById(R.id.account_creation_webview_loading);
         final Intent intent = getIntent();
 
-        String homeServerUrl = "https://matrix.org/";
+        String homeServerUrl = "https://matrix.unchat.cat/";
 
         if (intent.hasExtra(EXTRA_HOME_SERVER_URL)) {
             homeServerUrl = intent.getStringExtra(EXTRA_HOME_SERVER_URL);

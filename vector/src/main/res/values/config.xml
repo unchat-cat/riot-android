@@ -15,7 +15,7 @@
 
     <!-- empty means to use the active HS url -->
     <!-- set a valid URL like "https://matrix.org" to use a custom one -->
-    <string name="push_server_url" translatable="false" />
+    <string name="push_server_url" translatable="false">https://matrix.unchat.cat</string>
 
     <string-array name="room_directory_servers" translatable="false">
         <item>unchat.cat</item>

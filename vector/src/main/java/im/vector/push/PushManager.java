@@ -69,8 +69,9 @@ public final class PushManager {
     private static final String PREFS_SYNC_TIMEOUT = "GcmRegistrationManager.PREFS_SYNC_TIMEOUT";
     private static final String PREFS_SYNC_DELAY = "GcmRegistrationManager.PREFS_SYNC_DELAY";
 
+    // TODO: Investigate and add a bug report if necessary
     private static final String DEFAULT_PUSHER_APP_ID = "im.vector.app.android";
-    private static final String DEFAULT_PUSHER_URL = "https://matrix.org/_matrix/push/v1/notify";
+    private static final String DEFAULT_PUSHER_URL = "https://matrix.unchat.cat/_matrix/push/v1/notify";
     private static final String DEFAULT_PUSHER_FILE_TAG = "mobile";
 
     private String mPusherAppName = null;
