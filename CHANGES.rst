@@ -5,7 +5,7 @@ MatrixSdk:
  - Upgrade MatrixSdk to version 0.X.Y.
 
 Features:
- -
+ - Notification using MessagingStyle #2880
 
 Improvements:
  -
