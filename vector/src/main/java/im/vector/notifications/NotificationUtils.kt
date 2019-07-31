@@ -25,7 +25,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.support.annotation.StringRes
@@ -41,7 +40,7 @@ import im.vector.activity.VectorRoomActivity
 import im.vector.receiver.NotificationBroadcastReceiver
 import im.vector.util.PreferencesManager
 import im.vector.util.startNotificationChannelSettingsIntent
-import org.matrix.androidsdk.util.Log
+import org.matrix.androidsdk.core.Log
 import java.util.*
 
 
@@ -107,6 +106,8 @@ object NotificationUtils {
 
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
+        val accentColor = ContextCompat.getColor(context, R.color.notification_accent_color)
+
         //Migration - the noisy channel was deleted and recreated when sound preference was changed (id was DEFAULT_NOISY_NOTIFICATION_CHANNEL_ID_BASE
         // + currentTimeMillis).
         //Now the sound can only be change directly in system settings, so for app upgrading we are deleting this former channel
@@ -136,6 +137,7 @@ object NotificationUtils {
                     description = context.getString(R.string.notification_noisy_notifications)
                     enableVibration(true)
                     enableLights(true)
+                    lightColor = accentColor
                 })
 
         /**
@@ -148,6 +150,7 @@ object NotificationUtils {
                     description = context.getString(R.string.notification_silent_notifications)
                     setSound(null, null)
                     enableLights(true)
+                    lightColor = accentColor
                 })
 
         notificationManager.createNotificationChannel(NotificationChannel(LISTENING_FOR_EVENTS_NOTIFICATION_CHANNEL_ID,
@@ -166,7 +169,7 @@ object NotificationUtils {
                     description = context.getString(R.string.call)
                     setSound(null, null)
                     enableLights(true)
-                    lightColor = Color.GREEN
+                    lightColor = accentColor
                 })
     }
 
@@ -184,10 +187,14 @@ object NotificationUtils {
         i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pi = PendingIntent.getActivity(context, 0, i, 0)
 
+        val accentColor = ContextCompat.getColor(context, R.color.notification_accent_color)
+
         val builder = NotificationCompat.Builder(context, LISTENING_FOR_EVENTS_NOTIFICATION_CHANNEL_ID)
-                .setContentTitle(context.getString(R.string.riot_app_name))
-                .setContentText(context.getString(subTitleResId))
+                .setContentTitle(context.getString(subTitleResId))
+                .setCategory(NotificationCompat.CATEGORY_PROGRESS)
                 .setSmallIcon(R.drawable.logo_transparent)
+                .setProgress(0, 0, true)
+                .setColor(accentColor)
                 .setContentIntent(pi)
 
         // hide the notification from the status bar
@@ -233,7 +240,12 @@ object NotificationUtils {
      * @return the call notification.
      */
     @SuppressLint("NewApi")
-    fun buildIncomingCallNotification(context: Context, isVideo: Boolean, roomName: String, matrixId: String, callId: String): Notification {
+    fun buildIncomingCallNotification(context: Context,
+                                      isVideo: Boolean,
+                                      roomName: String,
+                                      matrixId: String,
+                                      callId: String): Notification {
+        val accentColor = ContextCompat.getColor(context, R.color.notification_accent_color)
 
         val builder = NotificationCompat.Builder(context, CALL_NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(ensureTitleNotEmpty(context, roomName))
@@ -246,7 +258,7 @@ object NotificationUtils {
                 }
                 .setSmallIcon(R.drawable.incoming_call_notification_transparent)
                 .setCategory(NotificationCompat.CATEGORY_CALL)
-                .setLights(Color.GREEN, 500, 500)
+                .setLights(accentColor, 500, 500)
 
         //Compat: Display the incoming call notification on the lock screen
         builder.priority = NotificationCompat.PRIORITY_MAX
@@ -286,8 +298,12 @@ object NotificationUtils {
      * @return the call notification.
      */
     @SuppressLint("NewApi")
-    fun buildPendingCallNotification(context: Context, isVideo: Boolean, roomName: String, roomId: String, matrixId: String, callId: String)
-            : Notification {
+    fun buildPendingCallNotification(context: Context,
+                                     isVideo: Boolean,
+                                     roomName: String,
+                                     roomId: String,
+                                     matrixId: String,
+                                     callId: String): Notification {
 
         val builder = NotificationCompat.Builder(context, CALL_NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(ensureTitleNotEmpty(context, roomName))
@@ -299,6 +315,7 @@ object NotificationUtils {
                     }
                 }
                 .setSmallIcon(R.drawable.incoming_call_notification_transparent)
+                .setCategory(NotificationCompat.CATEGORY_CALL)
 
         // Display the pending call notification on the lock screen
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -328,6 +345,17 @@ object NotificationUtils {
     }
 
     /**
+     * Build a temporary (because service will be stopped just after) notification for the CallService, when a call is ended
+     */
+    fun buildCallEndedNotification(context: Context): Notification {
+        return NotificationCompat.Builder(context, CALL_NOTIFICATION_CHANNEL_ID)
+                .setContentTitle(context.getString(R.string.call_ended))
+                .setSmallIcon(R.drawable.ic_material_call_end_grey)
+                .setCategory(NotificationCompat.CATEGORY_CALL)
+                .build()
+    }
+
+    /**
      * Build a notification for a Room
      */
     fun buildMessagesListNotification(context: Context,
@@ -351,7 +379,7 @@ object NotificationUtils {
                 // A category allows groups of notifications to be ranked and filtered – per user or system settings.
                 // For example, alarm notifications should display before promo notifications, or message from known contact
                 // that can be displayed in not disturb mode if white listed (the later will need compat28.x)
-                .setCategory(Notification.CATEGORY_MESSAGE)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
 
                 // Title for API < 16 devices.
                 .setContentTitle(roomInfo.roomDisplayName)
@@ -579,6 +607,7 @@ object NotificationUtils {
                 .setWhen(lastMessageTimestamp)
                 .setStyle(style)
                 .setContentTitle(context.getString(R.string.riot_app_name))
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setSmallIcon(smallIcon)
                 //set content text to support devices running API level < 24
                 .setContentText(compatSummary)
